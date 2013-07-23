@@ -28,8 +28,8 @@ working or even that the operator starts some legal action upon the
 user. As said before, this software has been written for educational 
 purposes only. So use it at your very own risc.
 
-Techically spoken
------------------
+Technically spoken
+------------------
 
 This script is intended to show how phantomjs may be used to intercept 
 javascript core functionalities and redirect output. The deobfuscation 
