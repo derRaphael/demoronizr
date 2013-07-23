@@ -44,7 +44,7 @@ if (system.args.length === 1 || ! /^https?:\/\/.+/.test(system.args[1]) ) {
     phantom.exit(1);
 }
 
-page.settings.userAgent = "Demoronizr/0.1 " + page.settings.userAgent ;
+page.settings.userAgent = "Demoronizr/0.2 " + page.settings.userAgent ;
 
 page.onResourceRequested = function (req) {
     // console.log('requested: ' + JSON.stringify(req, undefined, 4));
@@ -67,8 +67,11 @@ page.onInitialized = function() {
         try {
             window['document']['orgWrite'] = window['document']['write'];
             window.document.write = function(){
-                for( var i=0; i < arguments.length; i++ ){
-                    console.log( arguments[i] );
+                for( var i=0; i < arguments.length; i++ )
+                {
+                    the_line_to_write = arguments[i];
+                    the_line_to_write = the_line_to_write.replace(/([\r\n]){2,}/g, "$1");
+                    console.log( the_line_to_write );
                 }
                 document.orgWrite.apply( document, arguments );
             }
@@ -80,8 +83,11 @@ page.onInitialized = function() {
         try {
             window['document']['orgWriteLn'] = window['document']['writeln'];
             window.document.writeln = function(){
-                for( var i=0; i < arguments.length; i++ ){
-                    console.log( arguments[i] );
+                for( var i=0; i < arguments.length; i++ )
+                {
+                    the_line_to_write = arguments[i];
+                    the_line_to_write = the_line_to_write.replace(/([\r\n]){2,}/g, "$1");
+                    console.log( the_line_to_write );
                 }
                 document.orgWriteLn.apply( document, arguments );
             }
@@ -95,7 +101,8 @@ page.onInitialized = function() {
 
             window['orgEval'] = window['eval'];
             window['eval'] = function(){
-                for( var i=0; i < arguments.length; i++ ){
+                for( var i=0; i < arguments.length; i++ )
+                {
                     console.log( "EVAL:" + arguments[i] );
                 }
                 window['orgEval'].apply( window, arguments );
