@@ -24,7 +24,8 @@ financial or because your wife left you, or get in trouble because of
 using demoronizr, this is clearly your problem.
 It might happen, that the 'decrypted' page remains encrypted or stops working
 or even that the operator starts some legal action upon the user. As said
-before, this software has been written for educational purposes only.
+before, this software has been written for educational purposes only. So
+use it at your very own risc.
 
 Usage
 ------
